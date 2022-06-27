@@ -96,8 +96,9 @@ nitersBS = [opt.niterBS0, opt.niterBS1 ]
 imHeights = [opt.imHeight0, opt.imHeight1 ]
 imWidths = [opt.imWidth0, opt.imWidth1 ]
 
-os.system('mkdir {0}'.format(opt.testRoot ) )
-os.system('cp *.py %s' % opt.testRoot )
+if not osp.exists(opt.testRoot):
+    os.system('mkdir {0}'.format(opt.testRoot ) )
+# os.system('cp *.py %s' % opt.testRoot )
 
 opt.seed = 0
 print("Random Seed: ", opt.seed )
@@ -228,12 +229,9 @@ if opt.cuda:
 
 
 ####################################
-outfilename = opt.testRoot + '/results'
-for n in range(0, opt.level ):
-    outfilename = outfilename + '_brdf%d' % nepochs[n]
-    if opt.isLight:
-        outfilename += '_light%d' % nepochsLight[n]
-os.system('mkdir -p {0}'.format(outfilename ) )
+outfilename = opt.testRoot
+if not osp.exists(outfilename):
+    os.system('mkdir -p {0}'.format(outfilename ) )
 
 with open(opt.imList, 'r') as imIdIn:
     imIds = imIdIn.readlines()
