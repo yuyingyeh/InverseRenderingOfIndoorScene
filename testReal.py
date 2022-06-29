@@ -625,7 +625,7 @@ for imName in imList:
             envmapsPredImage = envmapsPredImage.transpose([1, 2, 3, 4, 0] )
 
             # Flip to be conincide with our dataset
-            np.savez_compressed(envmapPredImNames[n],
+            np.savez_compressed(envmapPredNames[n],
                     env = np.ascontiguousarray(envmapsPredImage[:, :, :, :, ::-1] ) )
 
             utils.writeEnvToFile(envmapsPredImages[n], 0, envmapPredImNames[n], nrows=24, ncols=16 )
