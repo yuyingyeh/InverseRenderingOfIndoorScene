@@ -59,6 +59,8 @@ parser.add_argument('--level', type=int, default=2, help='the cascade level')
 parser.add_argument('--isLight', action='store_true', help='whether to predict lightig')
 parser.add_argument('--isBS', action='store_true', help='whether to use bilateral solver')
 
+parser.add_argument('--seed', type=int, default=0)
+
 # Image Picking
 opt = parser.parse_args()
 print(opt)
@@ -100,7 +102,7 @@ if not osp.exists(opt.testRoot):
     os.system('mkdir {0}'.format(opt.testRoot ) )
 # os.system('cp *.py %s' % opt.testRoot )
 
-opt.seed = 0
+# opt.seed = 0
 print("Random Seed: ", opt.seed )
 random.seed(opt.seed )
 torch.manual_seed(opt.seed )
