@@ -105,6 +105,7 @@ if not osp.exists(opt.testRoot):
 # opt.seed = 0
 print("Random Seed: ", opt.seed )
 random.seed(opt.seed )
+np.random.seed(opt.seed )
 torch.manual_seed(opt.seed )
 
 opt.batchSize = 1
